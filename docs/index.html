@@ -94,6 +94,10 @@
     background: #bf5af2;
     color: #fff;
   }
+  .btn-red {
+    background: #ff453a;
+    color: #fff;
+  }
   .btn-gray {
     background: #3a3a3c;
     color: #e0e0e0;
@@ -115,6 +119,7 @@
   }
   .tag-rec { background: #30d158; color: #fff; }
   .tag-alt { background: #ff9f0a; color: #fff; }
+  .tag-new { background: #ff453a; color: #fff; }
   .warn {
     background: #3a2a00;
     border: 1px solid #ff9f0a;
@@ -123,6 +128,16 @@
     margin-top: 10px;
     font-size: 13px;
     color: #ffcc66;
+    line-height: 1.5;
+  }
+  .tip {
+    background: #0a2a1a;
+    border: 1px solid #30d158;
+    border-radius: 10px;
+    padding: 12px;
+    margin-top: 10px;
+    font-size: 13px;
+    color: #88ddaa;
     line-height: 1.5;
   }
   .divider {
@@ -170,6 +185,43 @@
   .collapse-content.show {
     display: block;
   }
+  .copy-box {
+    background: #2c2c2e;
+    border-radius: 10px;
+    padding: 12px;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .copy-box .link-text {
+    flex: 1;
+    font-size: 12px;
+    color: #0a84ff;
+    word-break: break-all;
+    line-height: 1.4;
+  }
+  .copy-box .copy-btn {
+    background: #0a84ff;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    -webkit-appearance: none;
+  }
+  .copy-box .copy-btn.copied {
+    background: #30d158;
+  }
+  .app-label {
+    font-size: 13px;
+    color: #888;
+    margin-top: 12px;
+    margin-bottom: 2px;
+  }
 </style>
 </head>
 <body>
@@ -214,7 +266,7 @@
 
   <a href="https://github.com/mineek/MuffinStore/releases/download/1.1/MuffinStore_v1.1.tipa" class="btn btn-green">
     下載 MuffinStore v1.1 <span class="tag tag-rec">最推薦</span>
-    <small>28.6 KB · 開源免費 · 介面簡潔</small>
+    <small>28.6 KB · 開源免費</small>
   </a>
 
   <a href="https://github.com/qbap/ONEJailbreak/raw/main/DowngradeApp_With_TrollStore_1.1-8.ipa" class="btn btn-orange">
@@ -238,22 +290,65 @@
   </a>
 </div>
 
-<!-- 步驟四 -->
+<!-- 步驟四：MuffinStore 使用教學（重點更新） -->
 <div class="card">
-  <h2><span class="step-num">4</span> 降級安裝舊版 Uber</h2>
+  <h2><span class="step-num">4</span> 用 MuffinStore 下載舊版 Uber <span class="tag tag-new">重要</span></h2>
+  
+  <div class="tip">💡 MuffinStore 沒有搜尋功能！你需要「貼上 App Store 連結」才能下載。請按照以下步驟操作：</div>
+
   <ol>
-    <li>打開 <b>MuffinStore</b>（或 DowngradeApp）</li>
-    <li>搜尋「<b>Uber</b>」</li>
-    <li>選擇支援 iOS 15 的舊版本</li>
-    <li>登入 Apple ID 驗證後下載安裝</li>
+    <li>先<b>複製</b>下方的 Uber App Store 連結（點「複製」按鈕）</li>
+    <li>打開 <b>MuffinStore</b> App</li>
+    <li>點擊「<b>Download</b>」</li>
+    <li>在彈出的「App Link」對話框中，<b>長按輸入框 → 貼上</b>剛才複製的連結</li>
+    <li>點擊「<b>Download</b>」</li>
+    <li>選擇「<b>Get version list from server</b>」（從伺服器取得版本列表）</li>
+    <li>從列表中<b>選擇一個舊版本</b>安裝</li>
+    <li>系統會要求輸入 <b>Apple ID</b> 驗證，登入後即可下載</li>
   </ol>
-  <div class="divider"></div>
-  <h2><span class="step-num">5</span> 鎖定 Uber 版本</h2>
+
+  <p class="app-label">Uber 叫車 App：</p>
+  <div class="copy-box">
+    <span class="link-text" id="uber-link">https://apps.apple.com/app/uber-request-a-ride/id368677368</span>
+    <button class="copy-btn" onclick="copyLink('uber-link', this)">複製</button>
+  </div>
+
+  <p class="app-label">Uber Eats 外送 App：</p>
+  <div class="copy-box">
+    <span class="link-text" id="ubereats-link">https://apps.apple.com/app/uber-eats-food-delivery/id1058959277</span>
+    <button class="copy-btn" onclick="copyLink('ubereats-link', this)">複製</button>
+  </div>
+
+  <p class="app-label">LINE：</p>
+  <div class="copy-box">
+    <span class="link-text" id="line-link">https://apps.apple.com/app/line/id443904275</span>
+    <button class="copy-btn" onclick="copyLink('line-link', this)">複製</button>
+  </div>
+
+  <p class="app-label">Instagram：</p>
+  <div class="copy-box">
+    <span class="link-text" id="ig-link">https://apps.apple.com/app/instagram/id389801252</span>
+    <button class="copy-btn" onclick="copyLink('ig-link', this)">複製</button>
+  </div>
+
+  <p class="app-label">YouTube：</p>
+  <div class="copy-box">
+    <span class="link-text" id="yt-link">https://apps.apple.com/app/youtube/id544007664</span>
+    <button class="copy-btn" onclick="copyLink('yt-link', this)">複製</button>
+  </div>
+
+  <div class="warn">⚠️ 注意：下載過程沒有進度條，請耐心等待！安裝提示出現後點「安裝」，等 5 秒再回到主畫面。<br><br>如果想保留 App 資料，請先到「設定 → 一般 → iPhone 儲存空間」找到該 App，選「<b>卸載 App</b>」（不是刪除），再用 MuffinStore 降級安裝。</div>
+</div>
+
+<!-- 步驟五 -->
+<div class="card">
+  <h2><span class="step-num">5</span> 鎖定 App 版本（防強制更新）</h2>
   <ol>
     <li>打開 <b>TrollFools</b></li>
-    <li>找到 Uber → <b>長按</b> → 點「<b>鎖定版本</b>」</li>
-    <li>回到 TrollStore →「<b>重建圖標緩存</b>」</li>
-    <li>前往「<b>設定 → App Store</b>」→ 關閉「App 更新」</li>
+    <li>在列表中找到 <b>Uber</b>（或你降級的 App）</li>
+    <li><b>長按</b>該 App → 點「<b>鎖定版本</b>」</li>
+    <li>回到 TrollStore → 點「<b>重建圖標緩存</b>」</li>
+    <li>前往「<b>設定 → App Store</b>」→ 關閉「<b>App 更新</b>」</li>
   </ol>
 </div>
 
@@ -269,6 +364,58 @@
     打開 Uber Eats 網頁版
     <small>ubereats.com · 瀏覽器直接點餐</small>
   </a>
+</div>
+
+<!-- 更多 App 連結 -->
+<div class="card">
+  <h2>🔗 更多常用 App 連結</h2>
+  <p>點「複製」後貼到 MuffinStore 的 App Link 即可下載舊版：</p>
+
+  <button class="collapse-btn" onclick="toggleApps()">展開更多 App 連結 ▼</button>
+  <div id="moreApps" class="collapse-content">
+
+    <p class="app-label">Facebook：</p>
+    <div class="copy-box">
+      <span class="link-text" id="fb-link">https://apps.apple.com/app/facebook/id284882215</span>
+      <button class="copy-btn" onclick="copyLink('fb-link', this)">複製</button>
+    </div>
+
+    <p class="app-label">Twitter / X：</p>
+    <div class="copy-box">
+      <span class="link-text" id="x-link">https://apps.apple.com/app/x/id333903271</span>
+      <button class="copy-btn" onclick="copyLink('x-link', this)">複製</button>
+    </div>
+
+    <p class="app-label">WhatsApp：</p>
+    <div class="copy-box">
+      <span class="link-text" id="wa-link">https://apps.apple.com/app/whatsapp-messenger/id310633997</span>
+      <button class="copy-btn" onclick="copyLink('wa-link', this)">複製</button>
+    </div>
+
+    <p class="app-label">Telegram：</p>
+    <div class="copy-box">
+      <span class="link-text" id="tg-link">https://apps.apple.com/app/telegram-messenger/id686449807</span>
+      <button class="copy-btn" onclick="copyLink('tg-link', this)">複製</button>
+    </div>
+
+    <p class="app-label">Spotify：</p>
+    <div class="copy-box">
+      <span class="link-text" id="spotify-link">https://apps.apple.com/app/spotify-music-and-podcasts/id324684580</span>
+      <button class="copy-btn" onclick="copyLink('spotify-link', this)">複製</button>
+    </div>
+
+    <p class="app-label">TikTok：</p>
+    <div class="copy-box">
+      <span class="link-text" id="tiktok-link">https://apps.apple.com/app/tiktok/id835599320</span>
+      <button class="copy-btn" onclick="copyLink('tiktok-link', this)">複製</button>
+    </div>
+
+    <p class="app-label">Netflix：</p>
+    <div class="copy-box">
+      <span class="link-text" id="netflix-link">https://apps.apple.com/app/netflix/id363590051</span>
+      <button class="copy-btn" onclick="copyLink('netflix-link', this)">複製</button>
+    </div>
+  </div>
 </div>
 
 <!-- 更多工具 -->
@@ -301,6 +448,7 @@
     <li>舊版 Uber 可能因伺服器限制無法叫車，請先測試</li>
     <li>建議安裝後立即用 TrollFools 鎖定版本</li>
     <li>如果 TrollStore 圖標消失，打開「<b>提示 (Tips)</b>」App 即可恢復</li>
+    <li>MuffinStore 需要輸入 <b>App Store 連結</b>，不支援搜尋功能</li>
   </ol>
 </div>
 
@@ -309,12 +457,62 @@
 </p>
 
 <script>
+function copyLink(id, btn) {
+  var text = document.getElementById(id).textContent;
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(function() {
+      showCopied(btn);
+    }).catch(function() {
+      fallbackCopy(text, btn);
+    });
+  } else {
+    fallbackCopy(text, btn);
+  }
+}
+
+function fallbackCopy(text, btn) {
+  var ta = document.createElement('textarea');
+  ta.value = text;
+  ta.style.position = 'fixed';
+  ta.style.left = '-9999px';
+  document.body.appendChild(ta);
+  ta.select();
+  try {
+    document.execCommand('copy');
+    showCopied(btn);
+  } catch(e) {
+    alert('請手動複製：' + text);
+  }
+  document.body.removeChild(ta);
+}
+
+function showCopied(btn) {
+  btn.textContent = '已複製 ✓';
+  btn.classList.add('copied');
+  setTimeout(function() {
+    btn.textContent = '複製';
+    btn.classList.remove('copied');
+  }, 2000);
+}
+
 function toggleMore() {
   var el = document.getElementById('moreTools');
   var btn = el.previousElementSibling;
   if (el.classList.contains('show')) {
     el.classList.remove('show');
     btn.textContent = '展開更多下載連結 ▼';
+  } else {
+    el.classList.add('show');
+    btn.textContent = '收起 ▲';
+  }
+}
+
+function toggleApps() {
+  var el = document.getElementById('moreApps');
+  var btn = el.previousElementSibling;
+  if (el.classList.contains('show')) {
+    el.classList.remove('show');
+    btn.textContent = '展開更多 App 連結 ▼';
   } else {
     el.classList.add('show');
     btn.textContent = '收起 ▲';
