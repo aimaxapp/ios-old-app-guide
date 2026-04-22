@@ -357,45 +357,45 @@
   <h2><span class="step-num">6</span> iOS 版本偽裝（繞過系統檢查）<span class="tag tag-new">進階</span></h2>
   <p>如果 Uber Eats 顯示「<b>我們已不再支援您的作業系統</b>」，表示 App 檢測到你的 iOS 版本太舊。用以下插件可以偽裝 iOS 版本號，讓 App 以為你是 iOS 18/19。</p>
 
-  <div class="tip">💡 <b>原理：</b>此插件使用純 Objective-C Runtime Swizzling，<b>不依賴 CydiaSubstrate</b>，專為 TrollFools 非越獄環境設計。它會攔截 App 讀取 iOS 版本的所有方法，回傳偽裝的 iOS 18.4.1 版本號。</div>
+  <div class="tip">💡 <b>原理：</b>v3 全面版覆蓋<b>所有已知的 iOS 版本檢測方式</b>，包括底層 C 函數（sysctl、uname）和網路請求 User-Agent。純 C + ObjC Runtime，<b>不依賴 CydiaSubstrate</b>。</div>
 
-  <div class="warn" style="background:#1a0a0a; border-color:#ff453a; color:#ff8888;">⚠️ <b>重要：</b>請先移除之前注入的舊版 iOSVersionSpoofer！<br>打開 TrollFools → 找到 Uber Eats → 點「<b>Plug-Ins</b>」→ 移除舊插件 → 再注入新版。</div>
+  <div class="warn" style="background:#1a0a0a; border-color:#ff453a; color:#ff8888;">⚠️ <b>重要：</b>請先移除之前注入的所有舊版插件！<br>打開 TrollFools → 找到 Uber Eats → 點「<b>Plug-Ins</b>」→ <b>移除所有舊插件</b> → 再注入 v3。</div>
 
   <ol>
-    <li>點擊下方按鈕<b>下載 VersionSpoofer.dylib</b></li>
+    <li>點擊下方按鈕<b>下載 VersionSpoofer_v3.dylib</b></li>
     <li>Safari 會提示無法預覽，點「<b>更多...</b>」→「<b>儲存到檔案</b>」存到 iPhone</li>
     <li>打開 <b>TrollFools</b></li>
     <li>在列表中找到 <b>Uber Eats</b></li>
-    <li>點擊 Uber Eats → 點<b>綠色的「Inject」按鈕</b></li>
-    <li>在檔案選擇器中找到剛下載的 <b>VersionSpoofer.dylib</b>（在「最近項目」或「下載項目」→「iCloud Drive」中）</li>
+    <li>先點「<b>Plug-Ins</b>」移除所有舊插件</li>
+    <li>點<b>綠色的「Inject」按鈕</b></li>
+    <li>在檔案選擇器中找到剛下載的 <b>VersionSpoofer_v3.dylib</b></li>
     <li>選擇檔案後點「<b>Open</b>」</li>
     <li>等待注入完成，<b>完全關閉</b> Uber Eats（從多工列表上滑移除）</li>
     <li>重新打開 Uber Eats 測試</li>
   </ol>
 
-  <a href="https://files.manuscdn.com/user_upload_by_module/session_file/310519663244695759/mydogJFLyqVsCxJx.dylib" class="btn btn-red">
-    下載 VersionSpoofer.dylib（v2 精簡版）
-    <small>65 KB · arm64 · 偽裝為 iOS 18.4.1 · 無 Substrate 依賴</small>
+  <a href="https://files.manuscdn.com/user_upload_by_module/session_file/310519663244695759/NzWGNBoOjLDaLBlV.dylib" class="btn btn-red">
+    下載 VersionSpoofer v3（全面版）⭐ 推薦
+    <small>67 KB · arm64 · 偽裝為 iOS 18.4.1 · 覆蓋所有檢測方式</small>
   </a>
 
-  <a href="https://files.manuscdn.com/user_upload_by_module/session_file/310519663244695759/TSepoejFJlOCwYnX.dylib" class="btn btn-gray" style="margin-top:8px;">
-    舊版 iOSVersionSpoofer.dylib（備用）
-    <small>132 KB · 依賴 Substrate · 可能閃退</small>
+  <a href="https://files.manuscdn.com/user_upload_by_module/session_file/310519663244695759/mydogJFLyqVsCxJx.dylib" class="btn btn-gray" style="margin-top:8px;">
+    舊版 v2（備用）
+    <small>65 KB · 僅覆蓋 ObjC API</small>
   </a>
 
   <div class="warn">⚠️ <b>注意事項：</b><br>
   ・如果注入後 App 閃退，回到 TrollFools → 找到 Uber Eats → 點「<b>Plug-Ins</b>」→ 移除該插件<br>
-  ・此插件偽裝 iOS 版本號為 18.4.1（UIDevice / NSProcessInfo / User Agent）<br>
-  ・如果伺服器端也檢查 iOS 版本（不只是客戶端），則可能仍無法使用<br>
-  ・也可以注入到其他 App（如 Uber 叫車）來繞過版本限制</div>
+  ・也可以注入到其他 App（如 Uber 叫車、LINE 等）來繞過版本限制<br>
+  ・如果 v3 仍無法繞過，表示 Uber 的檢查完全在伺服器端進行，建議改用網頁版</div>
 
   <table class="info-table">
-    <tr><td>插件名稱</td><td>VersionSpoofer v2（精簡版）</td></tr>
-    <tr><td>來源</td><td>自製 · 純 C + ObjC Runtime</td></tr>
-    <tr><td>依賴</td><td>僅 libobjc（iOS 內建）✅</td></tr>
+    <tr><td>插件名稱</td><td>VersionSpoofer v3（全面版）</td></tr>
+    <tr><td>來源</td><td>自製 · 純 C + ObjC Runtime + DYLD Interpose</td></tr>
+    <tr><td>依賴</td><td>僅 libobjc + libSystem（iOS 內建）✅</td></tr>
     <tr><td>架構</td><td>arm64 ✅</td></tr>
-    <tr><td>偽裝版本</td><td>iOS 18.4.1</td></tr>
-    <tr><td>偽裝範圍</td><td>UIDevice / NSProcessInfo / isOperatingSystemAtLeastVersion</td></tr>
+    <tr><td>偽裝版本</td><td>iOS 18.4.1（Build 22E252）</td></tr>
+    <tr><td>覆蓋範圍</td><td>UIDevice · NSProcessInfo · sysctl · uname · HTTP User-Agent · WKWebView · NSBundle</td></tr>
   </table>
 </div>
 
