@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>iOS 舊版 App 安裝指南</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+    background: #0a0a0a;
+    color: #e0e0e0;
+    padding: 16px;
+    padding-bottom: 60px;
+    -webkit-text-size-adjust: 100%;
+  }
+  h1 {
+    font-size: 22px;
+    text-align: center;
+    margin: 12px 0 6px;
+    color: #fff;
+  }
+  .subtitle {
+    text-align: center;
+    font-size: 13px;
+    color: #888;
+    margin-bottom: 20px;
+  }
+  .card {
+    background: #1c1c1e;
+    border-radius: 14px;
+    padding: 16px;
+    margin-bottom: 14px;
+  }
+  .card h2 {
+    font-size: 17px;
+    color: #fff;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .step-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: #0a84ff;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .card p, .card li {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #bbb;
+  }
+  .card ol {
+    padding-left: 20px;
+    margin-top: 8px;
+  }
+  .card ol li {
+    margin-bottom: 6px;
+  }
+  .btn {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    border-radius: 12px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 10px;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+  }
+  .btn-blue {
+    background: #0a84ff;
+    color: #fff;
+  }
+  .btn-green {
+    background: #30d158;
+    color: #fff;
+  }
+  .btn-orange {
+    background: #ff9f0a;
+    color: #fff;
+  }
+  .btn-purple {
+    background: #bf5af2;
+    color: #fff;
+  }
+  .btn-gray {
+    background: #3a3a3c;
+    color: #e0e0e0;
+  }
+  .btn small {
+    display: block;
+    font-size: 11px;
+    font-weight: 400;
+    opacity: 0.8;
+    margin-top: 3px;
+  }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-weight: 600;
+    margin-left: 6px;
+  }
+  .tag-rec { background: #30d158; color: #fff; }
+  .tag-alt { background: #ff9f0a; color: #fff; }
+  .warn {
+    background: #3a2a00;
+    border: 1px solid #ff9f0a;
+    border-radius: 10px;
+    padding: 12px;
+    margin-top: 10px;
+    font-size: 13px;
+    color: #ffcc66;
+    line-height: 1.5;
+  }
+  .divider {
+    height: 1px;
+    background: #333;
+    margin: 12px 0;
+  }
+  .info-table {
+    width: 100%;
+    font-size: 13px;
+    margin-top: 8px;
+  }
+  .info-table td {
+    padding: 6px 0;
+    border-bottom: 1px solid #2c2c2e;
+  }
+  .info-table td:first-child {
+    color: #888;
+    width: 35%;
+  }
+  .info-table td:last-child {
+    color: #e0e0e0;
+    font-weight: 500;
+  }
+  .header-icon {
+    font-size: 40px;
+    text-align: center;
+    margin-top: 20px;
+  }
+  .collapse-btn {
+    background: none;
+    border: 1px solid #444;
+    color: #0a84ff;
+    font-size: 13px;
+    padding: 6px 14px;
+    border-radius: 8px;
+    margin-top: 8px;
+    cursor: pointer;
+    -webkit-appearance: none;
+  }
+  .collapse-content {
+    display: none;
+    margin-top: 10px;
+  }
+  .collapse-content.show {
+    display: block;
+  }
+</style>
+</head>
+<body>
+
+<div class="header-icon">📱</div>
+<h1>iOS 舊版 App 安裝指南</h1>
+<p class="subtitle">適用 iPhone XR · iOS 15.3.1 · 免越獄</p>
+
+<!-- 裝置資訊 -->
+<div class="card">
+  <h2>📋 你的裝置資訊</h2>
+  <table class="info-table">
+    <tr><td>機型</td><td>iPhone XR</td></tr>
+    <tr><td>晶片</td><td>A12 Bionic (arm64e)</td></tr>
+    <tr><td>iOS 版本</td><td>15.3.1</td></tr>
+    <tr><td>安裝工具</td><td>TrollHelperOTA</td></tr>
+    <tr><td>需要電腦</td><td>不需要 ✅</td></tr>
+  </table>
+  <div class="warn">⚠️ 千萬不要升級 iOS！一旦升級到 17.0.1 以上，TrollStore 將永遠無法安裝。</div>
+</div>
+
+<!-- 步驟一 -->
+<div class="card">
+  <h2><span class="step-num">1</span> 安裝 TrollStore 巨魔商店</h2>
+  <ol>
+    <li>點擊下方按鈕，Safari 會提示安裝描述檔，點「允許」</li>
+    <li>前往「<b>設定 → 一般 → VPN 與裝置管理</b>」安裝描述檔</li>
+    <li>回到主畫面，打開新出現的「<b>GTA Car Tracker</b>」App</li>
+    <li>點擊「<b>Install TrollStore</b>」</li>
+    <li>安裝完成後，打開 TrollStore → Settings → <b>Install Persistence Helper</b> → 選「<b>提示 (Tips)</b>」</li>
+  </ol>
+  <a href="https://api.jailbreaks.app/troll64e" class="btn btn-blue">
+    安裝 TrollHelperOTA
+    <small>點擊後 Safari 會提示安裝描述檔</small>
+  </a>
+</div>
+
+<!-- 步驟二 -->
+<div class="card">
+  <h2><span class="step-num">2</span> 安裝 App 降級工具</h2>
+  <p>下載後選擇「<b>用 TrollStore 打開</b>」即可安裝。三選一即可：</p>
+
+  <a href="https://github.com/mineek/MuffinStore/releases/download/1.1/MuffinStore_v1.1.tipa" class="btn btn-green">
+    下載 MuffinStore v1.1 <span class="tag tag-rec">最推薦</span>
+    <small>28.6 KB · 開源免費 · 介面簡潔</small>
+  </a>
+
+  <a href="https://github.com/qbap/ONEJailbreak/raw/main/DowngradeApp_With_TrollStore_1.1-8.ipa" class="btn btn-orange">
+    下載 DowngradeApp v1.1-8 <span class="tag tag-alt">備選</span>
+    <small>免 FaceID/TouchID 驗證</small>
+  </a>
+
+  <a href="https://github.com/CokePokes/AppStorePlus-TrollStore/releases/download/v1.2-1/AppStore++_TrollStore_v1.0.3-2.ipa" class="btn btn-gray">
+    下載 AppStore++ v1.0.3-2
+    <small>16.8 MB · 經典老牌工具</small>
+  </a>
+</div>
+
+<!-- 步驟三 -->
+<div class="card">
+  <h2><span class="step-num">3</span> 安裝 TrollFools（鎖版本）</h2>
+  <p>安裝後可鎖定 App 版本，阻止強制更新彈窗。</p>
+  <a href="https://github.com/Lessica/TrollFools/releases/download/v4.3-246/TrollFools_4.3-246.tipa" class="btn btn-purple">
+    下載 TrollFools v4.3
+    <small>最新版 · 2026-04-16 更新</small>
+  </a>
+</div>
+
+<!-- 步驟四 -->
+<div class="card">
+  <h2><span class="step-num">4</span> 降級安裝舊版 Uber</h2>
+  <ol>
+    <li>打開 <b>MuffinStore</b>（或 DowngradeApp）</li>
+    <li>搜尋「<b>Uber</b>」</li>
+    <li>選擇支援 iOS 15 的舊版本</li>
+    <li>登入 Apple ID 驗證後下載安裝</li>
+  </ol>
+  <div class="divider"></div>
+  <h2><span class="step-num">5</span> 鎖定 Uber 版本</h2>
+  <ol>
+    <li>打開 <b>TrollFools</b></li>
+    <li>找到 Uber → <b>長按</b> → 點「<b>鎖定版本</b>」</li>
+    <li>回到 TrollStore →「<b>重建圖標緩存</b>」</li>
+    <li>前往「<b>設定 → App Store</b>」→ 關閉「App 更新」</li>
+  </ol>
+</div>
+
+<!-- 備用方案 -->
+<div class="card">
+  <h2>🌐 備用方案：Uber 網頁版</h2>
+  <p>如果舊版 Uber App 無法正常叫車，可直接用網頁版：</p>
+  <a href="https://m.uber.com" class="btn btn-gray">
+    打開 Uber 網頁版
+    <small>m.uber.com · 不需安裝 App</small>
+  </a>
+  <a href="https://www.ubereats.com" class="btn btn-gray" style="margin-top:8px;">
+    打開 Uber Eats 網頁版
+    <small>ubereats.com · 瀏覽器直接點餐</small>
+  </a>
+</div>
+
+<!-- 更多工具 -->
+<div class="card">
+  <h2>🔧 更多實用工具</h2>
+  <button class="collapse-btn" onclick="toggleMore()">展開更多下載連結 ▼</button>
+  <div id="moreTools" class="collapse-content">
+    <a href="https://github.com/opa334/TrollStore" class="btn btn-gray" style="margin-top:8px;">
+      TrollStore GitHub 官方頁面
+    </a>
+    <a href="https://ios.cfw.guide/installing-trollstore/" class="btn btn-gray" style="margin-top:8px;">
+      TrollStore 官方安裝教學
+    </a>
+    <a href="https://github.com/swaggyP36000/TrollStore-IPAs" class="btn btn-gray" style="margin-top:8px;">
+      TrollStore-IPAs 合集
+      <small>大量預打包 IPA 下載</small>
+    </a>
+    <a href="https://decrypt.day/app/id368677368" class="btn btn-gray" style="margin-top:8px;">
+      Uber 歷史版本 IPA (decrypt.day)
+    </a>
+  </div>
+</div>
+
+<!-- 注意事項 -->
+<div class="card">
+  <h2>⚠️ 重要注意事項</h2>
+  <ol>
+    <li><b>絕對不要升級 iOS</b>，否則 TrollStore 將永遠無法使用</li>
+    <li>所有下載連結均來自 <b>GitHub 官方</b>，安全可靠</li>
+    <li>舊版 Uber 可能因伺服器限制無法叫車，請先測試</li>
+    <li>建議安裝後立即用 TrollFools 鎖定版本</li>
+    <li>如果 TrollStore 圖標消失，打開「<b>提示 (Tips)</b>」App 即可恢復</li>
+  </ol>
+</div>
+
+<p style="text-align:center; font-size:11px; color:#555; margin-top:20px;">
+  最後更新：2026-04-22 · 僅供學習研究用途
+</p>
+
+<script>
+function toggleMore() {
+  var el = document.getElementById('moreTools');
+  var btn = el.previousElementSibling;
+  if (el.classList.contains('show')) {
+    el.classList.remove('show');
+    btn.textContent = '展開更多下載連結 ▼';
+  } else {
+    el.classList.add('show');
+    btn.textContent = '收起 ▲';
+  }
+}
+</script>
+
+</body>
+</html>
