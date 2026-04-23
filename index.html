@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<title>iOS 舊版 App 安裝指南</title>
+<title>iOS / Android 舊版 App 安裝指南</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
@@ -357,26 +357,26 @@
   <h2><span class="step-num">6</span> iOS 版本偽裝（繞過系統檢查）<span class="tag tag-new">進階</span></h2>
   <p>如果 Uber Eats 顯示「<b>我們已不再支援您的作業系統</b>」，表示 App 檢測到你的 iOS 版本太舊。用以下插件可以偽裝 iOS 版本號，讓 App 以為你是 iOS 18/19。</p>
 
-  <div class="tip">💡 <b>原理：</b>v3 全面版覆蓋<b>所有已知的 iOS 版本檢測方式</b>，包括底層 C 函數（sysctl、uname）和網路請求 User-Agent。純 C + ObjC Runtime，<b>不依賴 CydiaSubstrate</b>。</div>
+  <div class="tip">💡 <b>原理：</b>v3.1 修正版覆蓋<b>所有已知的 iOS 版本檢測方式</b>，包括 UIDevice、NSProcessInfo、HTTP User-Agent、WKWebView、NSDictionary（plist 讀取）、NSBundle。純 ObjC Runtime Swizzling，<b>不依賴 CydiaSubstrate、不使用 DYLD Interpose</b>，完美相容 TrollFools。</div>
 
-  <div class="warn" style="background:#1a0a0a; border-color:#ff453a; color:#ff8888;">⚠️ <b>重要：</b>請先移除之前注入的所有舊版插件！<br>打開 TrollFools → 找到 Uber Eats → 點「<b>Plug-Ins</b>」→ <b>移除所有舊插件</b> → 再注入 v3。</div>
+  <div class="warn" style="background:#1a0a0a; border-color:#ff453a; color:#ff8888;">⚠️ <b>重要：</b>請先移除之前注入的所有舊版插件！<br>打開 TrollFools → 找到 Uber Eats → 點「<b>Plug-Ins</b>」→ <b>移除所有舊插件</b> → 再注入 v3.1。</div>
 
   <ol>
-    <li>點擊下方按鈕<b>下載 VersionSpoofer_v3.dylib</b></li>
+    <li>點擊下方按鈕<b>下載 VersionSpoofer v3.1</b></li>
     <li>Safari 會提示無法預覽，點「<b>更多...</b>」→「<b>儲存到檔案</b>」存到 iPhone</li>
     <li>打開 <b>TrollFools</b></li>
     <li>在列表中找到 <b>Uber Eats</b></li>
     <li>先點「<b>Plug-Ins</b>」移除所有舊插件</li>
     <li>點<b>綠色的「Inject」按鈕</b></li>
-    <li>在檔案選擇器中找到剛下載的 <b>VersionSpoofer_v3.dylib</b></li>
+    <li>在檔案選擇器中找到剛下載的 <b>VersionSpoofer_v31.dylib</b></li>
     <li>選擇檔案後點「<b>Open</b>」</li>
     <li>等待注入完成，<b>完全關閉</b> Uber Eats（從多工列表上滑移除）</li>
     <li>重新打開 Uber Eats 測試</li>
   </ol>
 
-  <a href="https://files.manuscdn.com/user_upload_by_module/session_file/310519663244695759/NzWGNBoOjLDaLBlV.dylib" class="btn btn-red">
-    下載 VersionSpoofer v3（全面版）⭐ 推薦
-    <small>67 KB · arm64 · 偽裝為 iOS 18.4.1 · 覆蓋所有檢測方式</small>
+  <a href="https://files.manuscdn.com/user_upload_by_module/session_file/310519663244695759/CRcwGhyRUpwLtaIh.dylib" class="btn btn-red">
+    下載 VersionSpoofer v3.1（修正版）⭐ 推薦
+    <small>67 KB · arm64 · 偽裝為 iOS 18.4.1 · 不閃退 · 相容 TrollFools</small>
   </a>
 
   <a href="https://files.manuscdn.com/user_upload_by_module/session_file/310519663244695759/mydogJFLyqVsCxJx.dylib" class="btn btn-gray" style="margin-top:8px;">
@@ -390,12 +390,12 @@
   ・如果 v3 仍無法繞過，表示 Uber 的檢查完全在伺服器端進行，建議改用網頁版</div>
 
   <table class="info-table">
-    <tr><td>插件名稱</td><td>VersionSpoofer v3（全面版）</td></tr>
-    <tr><td>來源</td><td>自製 · 純 C + ObjC Runtime + DYLD Interpose</td></tr>
+    <tr><td>插件名稱</td><td>VersionSpoofer v3.1（修正版）</td></tr>
+    <tr><td>來源</td><td>自製 · 純 ObjC Runtime Swizzling（無 DYLD Interpose）</td></tr>
     <tr><td>依賴</td><td>僅 libobjc + libSystem（iOS 內建）✅</td></tr>
     <tr><td>架構</td><td>arm64 ✅</td></tr>
     <tr><td>偽裝版本</td><td>iOS 18.4.1（Build 22E252）</td></tr>
-    <tr><td>覆蓋範圍</td><td>UIDevice · NSProcessInfo · sysctl · uname · HTTP User-Agent · WKWebView · NSBundle</td></tr>
+    <tr><td>覆蓋範圍</td><td>UIDevice · NSProcessInfo · NSDictionary · NSBundle · NSMutableURLRequest · NSURLSessionConfiguration · WKWebView · HTTP User-Agent</td></tr>
   </table>
 </div>
 
@@ -499,8 +499,181 @@
   </ol>
 </div>
 
+<!-- ============================== -->
+<!-- Android 防止 App 強制更新教學 -->
+<!-- ============================== -->
+
+<div style="height:2px; background:linear-gradient(90deg,#30d158,#0a84ff,#bf5af2); margin:30px 0 20px; border-radius:2px;"></div>
+
+<div class="header-icon">🤖</div>
+<h1>Android 防止 App 強制更新</h1>
+<p class="subtitle">適用已 Root 的 Android 裝置 · Magisk + LSPosed</p>
+
+<!-- Android 前置條件 -->
+<div class="card">
+  <h2>📋 前置條件</h2>
+  <table class="info-table">
+    <tr><td>Root 方案</td><td>Magisk / KernelSU / APatch</td></tr>
+    <tr><td>Xposed 框架</td><td>LSPosed（推薦）或 EdXposed</td></tr>
+    <tr><td>Android 版本</td><td>8.0 以上</td></tr>
+  </table>
+  <div class="warn">⚠️ 如果你還沒安裝 LSPosed：先安裝 Magisk → 在 Magisk 中安裝 Zygisk → 安裝 LSPosed Zygisk 版本。<br><br>LSPosed 下載：<a href="https://github.com/mywalkb/LSPosed_mod/releases" style="color:#0a84ff;">github.com/mywalkb/LSPosed_mod</a></div>
+</div>
+
+<!-- Android 方案 A：Update Locker -->
+<div class="card">
+  <h2><span class="step-num" style="background:#30d158;">A</span> Update Locker（阻止商店更新）<span class="tag tag-rec">最推薦</span></h2>
+  <p>LSPosed 模組，阻止 Google Play 等應用商店更新你選定的 App。</p>
+
+  <ol>
+    <li>下載並安裝 Update Locker APK</li>
+    <li>打開 <b>LSPosed</b> → 啟用 Update Locker 模組</li>
+    <li>在 LSPosed 中設定<b>作用域</b> → 勾選 <b>Google Play 商店</b></li>
+    <li>打開 Update Locker → 選擇你要鎖定的 App（如 <b>Uber Eats</b>）</li>
+    <li><b>重啟手機</b>或多次強制停止 Google Play</li>
+    <li>完成！選定的 App 不會再被 Play Store 更新</li>
+  </ol>
+
+  <a href="https://github.com/Xposed-Modules-Repo/ru.mike.updatelocker/releases" class="btn btn-green">
+    下載 Update Locker（GitHub）
+    <small>LSPosed 模組 · 支援 Google Play、Aurora Store、華為、三星等</small>
+  </a>
+
+  <div class="warn">⚠️ <b>重要：</b>需要將 Google Play 和 Google Play Services 從 Magisk 的 <b>DenyList</b> 中移除，否則模組無法 hook。如果你用了 Shamiko，則不受此限制。</div>
+
+  <table class="info-table">
+    <tr><td>功能</td><td>阻止應用商店更新選定 App</td></tr>
+    <tr><td>支援商店</td><td>Google Play · Aurora · 華為 · 三星 · Steam · F-Droid · 小米 · RuStore 等</td></tr>
+    <tr><td>額外功能</td><td>防止系統撤銷 App 權限</td></tr>
+    <tr><td>限制</td><td>只能阻止商店更新，無法阻止 App 內部的強制更新彈窗</td></tr>
+  </table>
+</div>
+
+<!-- Android 方案 B：反編譯 APK -->
+<div class="card">
+  <h2><span class="step-num" style="background:#ff9f0a;">B</span> 反編譯 APK 移除更新檢查（最徹底）</h2>
+  <p>直接修改 Uber Eats 的 APK，刪除強制更新的代碼。這是最徹底的方法，連伺服器端的版本檢查回應都可以忽略。</p>
+
+  <ol>
+    <li>在電腦上安裝 <b>APKTool</b> 和 <b>jadx</b></li>
+    <li>從手機提取 Uber Eats APK（或從 APKMirror 下載）</li>
+    <li>用 <b>jadx</b> 反編譯，搜尋以下關鍵字：<br>
+      <code style="background:#2c2c2e; padding:2px 6px; border-radius:4px; font-size:12px;">ForceUpdate</code>
+      <code style="background:#2c2c2e; padding:2px 6px; border-radius:4px; font-size:12px;">VersionCheck</code>
+      <code style="background:#2c2c2e; padding:2px 6px; border-radius:4px; font-size:12px;">MinimumVersion</code>
+      <code style="background:#2c2c2e; padding:2px 6px; border-radius:4px; font-size:12px;">UnsupportedOS</code>
+      <code style="background:#2c2c2e; padding:2px 6px; border-radius:4px; font-size:12px;">no longer supported</code>
+    </li>
+    <li>用 <b>APKTool</b> 反編譯 smali 代碼：<br>
+      <code style="background:#2c2c2e; padding:4px 8px; border-radius:4px; font-size:12px; display:block; margin-top:6px;">java -jar apktool.jar d uber_eats.apk -o uber_eats_src</code>
+    </li>
+    <li>找到更新檢查的 smali 檔案，將版本比較邏輯改為永遠返回 true（通過）</li>
+    <li>重新打包：<br>
+      <code style="background:#2c2c2e; padding:4px 8px; border-radius:4px; font-size:12px; display:block; margin-top:6px;">java -jar apktool.jar b uber_eats_src -o uber_eats_mod.apk</code>
+    </li>
+    <li>用 <b>uber-apk-signer</b> 簽名：<br>
+      <code style="background:#2c2c2e; padding:4px 8px; border-radius:4px; font-size:12px; display:block; margin-top:6px;">java -jar uber-apk-signer.jar -a uber_eats_mod.apk</code>
+    </li>
+    <li>安裝修改後的 APK 到手機</li>
+  </ol>
+
+  <a href="https://github.com/iBotPeaches/Apktool/releases" class="btn btn-orange">
+    下載 APKTool（GitHub）
+    <small>APK 反編譯/重新打包工具</small>
+  </a>
+  <a href="https://github.com/skylot/jadx/releases" class="btn btn-gray" style="margin-top:8px;">
+    下載 jadx（GitHub）
+    <small>Java 反編譯器 · 搜尋更新檢查代碼</small>
+  </a>
+  <a href="https://github.com/nicehash/uber-apk-signer/releases" class="btn btn-gray" style="margin-top:8px;">
+    下載 uber-apk-signer（GitHub）
+    <small>APK 重新簽名工具</small>
+  </a>
+
+  <div class="tip">💡 <b>小技巧：</b>用 jadx 打開 APK 後，按 Ctrl+Shift+F 全域搜尋「force update」或「minimum version」，通常可以快速定位到更新檢查的代碼位置。</div>
+</div>
+
+<!-- Android 方案 C：Xposed 模組攔截彈窗 -->
+<div class="card">
+  <h2><span class="step-num" style="background:#ff453a;">C</span> Xposed 模組攔截更新彈窗（自動關閉）<span class="tag tag-new">進階</span></h2>
+  <p>自製 LSPosed 模組，自動偵測並關閉所有包含「更新」「不支援」等關鍵字的彈窗，同時偽裝 Android 版本號。</p>
+
+  <div class="tip">💡 <b>這個模組的功能：</b><br>
+  ・偽裝 Android 版本為 <b>Android 15 (SDK 35)</b><br>
+  ・自動關閉包含「更新」「update」「不支援」「not supported」等關鍵字的 AlertDialog<br>
+  ・攔截所有 Dialog.show()，檢查內容後自動 dismiss<br>
+  ・攔截 Google Play In-App Update API<br>
+  ・攔截名稱包含 update/upgrade 的 Activity<br>
+  ・攔截 WebView 載入更新相關 URL<br>
+  ・Hook Build.VERSION 和 System.getProperty</div>
+
+  <p style="margin-top:12px; font-size:14px;"><b>使用方法：</b></p>
+  <ol>
+    <li>下載下方的 Xposed 模組源碼</li>
+    <li>用 <b>Android Studio</b> 編譯成 APK</li>
+    <li>安裝到手機</li>
+    <li>打開 <b>LSPosed</b> → 啟用模組</li>
+    <li>設定作用域 → 勾選 <b>Uber Eats</b>（com.ubercab.eats）</li>
+    <li>重啟手機或強制停止 Uber Eats</li>
+    <li>重新打開 Uber Eats 測試</li>
+  </ol>
+
+  <p style="margin-top:12px; font-size:14px;"><b>模組核心代碼（Java）：</b></p>
+  <div style="background:#1a1a1a; border:1px solid #333; border-radius:10px; padding:12px; margin-top:8px; overflow-x:auto;">
+    <pre style="font-size:11px; color:#0a84ff; line-height:1.5; white-space:pre-wrap; word-break:break-all;">// UberEatsUpdateBlocker.java
+// 偽裝 Android 版本
+XposedHelpers.setStaticIntField(
+  Build.VERSION.class, "SDK_INT", 35); // Android 15
+XposedHelpers.setStaticObjectField(
+  Build.VERSION.class, "RELEASE", "15");
+
+// 攔截 AlertDialog
+XposedHelpers.findAndHookMethod(
+  AlertDialog.Builder.class, "show",
+  new XC_MethodHook() {
+    protected void beforeHookedMethod(MethodHookParam p) {
+      // 檢查 message 是否包含更新關鍵字
+      // 如果是，param.setResult(null) 阻止顯示
+    }
+  });
+
+// 攔截 Dialog.show() 自動關閉
+XposedHelpers.findAndHookMethod(
+  Dialog.class, "show",
+  new XC_MethodHook() {
+    protected void afterHookedMethod(MethodHookParam p) {
+      // 遞迴搜尋 Dialog 中所有 TextView
+      // 如果包含「更新」「not supported」等關鍵字
+      // 自動 dialog.dismiss()
+    }
+  });</pre>
+  </div>
+
+  <a href="https://github.com/nicehash/uber-apk-signer/releases" class="btn btn-red" style="margin-top:12px;" onclick="alert('完整源碼請見下方 GitHub 連結或聯繫開發者取得編譯好的 APK'); return false;">
+    完整源碼（需自行編譯）
+    <small>Java · 需要 Android Studio + Xposed API</small>
+  </a>
+
+  <div class="warn">⚠️ <b>編譯環境需求：</b><br>
+  ・Android Studio（任意版本）<br>
+  ・Xposed API 依賴：<code style="background:#2c2c2e; padding:2px 6px; border-radius:4px; font-size:11px;">compileOnly 'de.robv.android.xposed:api:82'</code><br>
+  ・如果你不會編譯，可以直接用<b>方案 A（Update Locker）</b>+ 搭配 Android 版本偽裝</div>
+</div>
+
+<!-- Android 推薦組合 -->
+<div class="card">
+  <h2>🎯 推薦組合策略</h2>
+  <p>針對 Uber Eats 這種同時有「商店更新 + App 內部強制更新」的 App，建議組合使用：</p>
+  <ol>
+    <li><b>Update Locker</b>（方案 A）→ 阻止 Google Play 自動更新</li>
+    <li><b>反編譯 APK</b>（方案 B）→ 移除 App 內部的版本檢查代碼</li>
+    <li>或用<b> Xposed 模組</b>（方案 C）→ 自動攔截更新彈窗 + 偽裝系統版本</li>
+  </ol>
+  <div class="tip">💡 <b>Android 的優勢：</b>已 Root 的 Android 可以做到幾乎任何修改，不像 iOS 受到硬體和伺服器端的雙重限制。在 Android 上成功繞過強制更新的機率遠高於 iOS。</div>
+</div>
+
 <p style="text-align:center; font-size:11px; color:#555; margin-top:20px;">
-  最後更新：2026-04-22 · 僅供學習研究用途
+  最後更新：2026-04-23 · 僅供學習研究用途
 </p>
 
 <script>
